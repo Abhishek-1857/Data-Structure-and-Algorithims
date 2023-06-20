@@ -1,0 +1,1 @@
+javac InsertionSort.java && java InsertionSort

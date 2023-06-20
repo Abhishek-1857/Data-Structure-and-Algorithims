@@ -1,0 +1,1 @@
+javac bubbleSort.java && java bubbleSort

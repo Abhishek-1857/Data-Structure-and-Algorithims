@@ -1,0 +1,1 @@
+javac MergeSort.java && java MergeSort

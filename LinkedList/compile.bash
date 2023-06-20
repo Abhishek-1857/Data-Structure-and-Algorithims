@@ -1,0 +1,1 @@
+javac linkedlist.java && java linkedlist

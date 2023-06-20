@@ -1,0 +1,1 @@
+javac Queue.java && java Queue

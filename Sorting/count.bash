@@ -1,0 +1,1 @@
+javac CountSort.java && java CountSort

@@ -1,0 +1,1 @@
+javac Cqueue.java && java Cqueue
