@@ -1,0 +1,1 @@
+javac Quicksort.java && java Quicksort

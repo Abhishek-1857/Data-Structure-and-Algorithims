@@ -1,46 +1,51 @@
-import java.util.Scanner;
-
 public class CountSort {
-    public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int i;
-        int j;
-        int[] arr=new int[5];
-        for( i=0;i<arr.length;i++){
-            arr[i]=sc.nextInt();
-        }
+
+    public static void countsort(int arr[],int n){
+        
+        // finding maximum element
         int max=arr[0];
-        for( i=1;i<arr.length;i++){
-            if(arr[i]>max){
+        for(int i=1;i<n;i++){
+            if (arr[i]>max){
                 max=arr[i];
             }
         }
-      int size=max+1;
 
-      int[] count=new int[size];
-     
-        for( j=0;j<arr.length;j++){
-            count[arr[j]]=count[arr[j]]+1;
+        // creating count array of length max+1
+        int countArr[]=new int[max+1];
+        
+        // count of each element in original array in cout array
+        for(int i=0;i<n;i++){
+            countArr[arr[i]]++;
         }
 
-    
-      
- i=0;//for count
- j=0;//for main
-        while(i<max+1){
-            if(count[i]>0){
-                arr[j]=i;
-                count[i]=count[i]-1;
-                j++;
-            }
-            else{
-                i++;
-            }
+        // comulative sum of count array
+        for(int i=1;i<countArr.length;i++){
+            countArr[i]+=countArr[i-1];
         }
 
-        for( int k=0;k<arr.length;k++){
-            System.out.print(arr[k]+" ");
+        // new output array of same length as original array
+        int out[]=new int[n];
+
+        // Find the index of each element of the original array in the count array
+        // This gives the cumulative count. Place the element at the index calculated
+        for(int i=n-1;i>=0;i--){
+            out[--countArr[arr[i]]]=arr[i];
         }
-        System.out.println();
+
+        // Copy into original array
+        for(int i=0;i<n;i++){
+            arr[i]=out[i];
+        }
     }
+    public static void main(String[] args) {
+      int arr[]={5,4,3,2,1};
+      int n=arr.length;
+
+      countsort(arr,n);
+
+      for(int i=0;i<n;i++){
+        System.out.println(arr[i]);
+      }
+      
+}
 }
